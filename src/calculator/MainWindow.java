@@ -88,9 +88,19 @@ public class MainWindow extends javax.swing.JFrame {
         clearE.setFont(new java.awt.Font("Noto Sans", 0, 10)); // NOI18N
         clearE.setText("CE");
         clearE.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        clearE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearEActionPerformed(evt);
+            }
+        });
 
         clear.setText("C");
         clear.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
 
         plusMinus.setText("±");
         plusMinus.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -196,6 +206,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         plus.setText("+");
         plus.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        plus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusActionPerformed(evt);
+            }
+        });
 
         point.setText(".");
         point.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -354,8 +369,9 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     String output = "";
-    String num1;
-    String num2;
+    double num1;
+    double num2;
+    int operationStage = 0;
     
     boolean positive = true;
     boolean pointed = false;
@@ -429,15 +445,28 @@ public class MainWindow extends javax.swing.JFrame {
         }
         
         if (!positive) {
-            output = "";
-            for (int i = 0; i < output.length(); i++) {
-                output += output.charAt(i+1);
-            }
             
             positive = true;
         }
         jTextPane1.setText(output);
     }//GEN-LAST:event_plusMinusActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        // TODO add your handling code here:
+        output = "";
+        operationStage = 0;
+    }//GEN-LAST:event_clearActionPerformed
+
+    private void clearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearEActionPerformed
+        output = "";
+    }//GEN-LAST:event_clearEActionPerformed
+
+    private void plusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusActionPerformed
+        // TODO add your handling code here
+        num1 = Double.parseDouble(output);
+        output = "";
+        
+    }//GEN-LAST:event_plusActionPerformed
 
     
     /**

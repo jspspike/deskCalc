@@ -191,6 +191,9 @@
               <Insets value="[2, 2, 2, 2]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearEActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="clear">
           <Properties>
@@ -199,6 +202,9 @@
               <Insets value="[2, 2, 2, 2]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="plusMinus">
           <Properties>
@@ -435,6 +441,9 @@
                   <Insets value="[2, 2, 2, 2]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="plusActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="point">
               <Properties>
