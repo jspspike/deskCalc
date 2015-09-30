@@ -98,12 +98,27 @@ public class MainWindow extends javax.swing.JFrame {
 
         seven.setText("7");
         seven.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        seven.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sevenActionPerformed(evt);
+            }
+        });
 
         eight.setText("8");
         eight.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        eight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eightActionPerformed(evt);
+            }
+        });
 
         nine.setText("9");
         nine.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        nine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nineActionPerformed(evt);
+            }
+        });
 
         divide.setText("/");
         divide.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -120,24 +135,54 @@ public class MainWindow extends javax.swing.JFrame {
 
         six.setText("6");
         six.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        six.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sixActionPerformed(evt);
+            }
+        });
 
         five.setText("5");
         five.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        five.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fiveActionPerformed(evt);
+            }
+        });
 
         four.setText("4");
         four.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        four.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fourActionPerformed(evt);
+            }
+        });
 
         equals.setText("=");
         equals.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         one.setText("1");
         one.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        one.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oneActionPerformed(evt);
+            }
+        });
 
         two.setText("2");
         two.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        two.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                twoActionPerformed(evt);
+            }
+        });
 
         three.setText("3");
         three.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        three.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                threeActionPerformed(evt);
+            }
+        });
 
         minus.setText("-");
         minus.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -147,9 +192,19 @@ public class MainWindow extends javax.swing.JFrame {
 
         point.setText(".");
         point.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        point.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pointActionPerformed(evt);
+            }
+        });
 
         zero.setText("0");
         zero.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        zero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zeroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -292,6 +347,67 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    String output = "";
+    
+    private void zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroActionPerformed
+        // TODO add your handling code here:
+        output += "0";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_zeroActionPerformed
+
+    private void oneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneActionPerformed
+        // TODO add your handling code here:
+        output += "1";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_oneActionPerformed
+
+    private void twoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoActionPerformed
+        // TODO add your handling code here:
+        output += "2";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_twoActionPerformed
+
+    private void threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeActionPerformed
+        output += "3";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_threeActionPerformed
+
+    private void fourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourActionPerformed
+        output += "4";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_fourActionPerformed
+
+    private void fiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveActionPerformed
+       output += "5";
+       jTextPane1.setText(output);
+    }//GEN-LAST:event_fiveActionPerformed
+
+    private void sixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixActionPerformed
+        output += "6";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_sixActionPerformed
+
+    private void sevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenActionPerformed
+        output += "7";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_sevenActionPerformed
+
+    private void eightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightActionPerformed
+        output += "8";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_eightActionPerformed
+
+    private void nineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineActionPerformed
+        output += "9";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_nineActionPerformed
+
+    private void pointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointActionPerformed
+        output += ".";
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_pointActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */

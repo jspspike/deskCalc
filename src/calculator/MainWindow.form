@@ -219,6 +219,9 @@
               <Insets value="[2, 2, 2, 2]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sevenActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="eight">
           <Properties>
@@ -227,6 +230,9 @@
               <Insets value="[2, 2, 2, 2]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eightActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="nine">
           <Properties>
@@ -235,6 +241,9 @@
               <Insets value="[2, 2, 2, 2]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nineActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="divide">
           <Properties>
@@ -278,6 +287,9 @@
               <Insets value="[2, 2, 2, 2]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sixActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="five">
           <Properties>
@@ -286,6 +298,9 @@
               <Insets value="[2, 2, 2, 2]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fiveActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="four">
           <Properties>
@@ -294,6 +309,9 @@
               <Insets value="[2, 2, 2, 2]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fourActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
 
@@ -367,6 +385,9 @@
                   <Insets value="[2, 2, 2, 2]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="oneActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="two">
               <Properties>
@@ -375,6 +396,9 @@
                   <Insets value="[2, 2, 2, 2]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="twoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="three">
               <Properties>
@@ -383,6 +407,9 @@
                   <Insets value="[2, 2, 2, 2]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="threeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="minus">
               <Properties>
@@ -407,6 +434,9 @@
                   <Insets value="[2, 2, 2, 2]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pointActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="zero">
               <Properties>
@@ -415,6 +445,9 @@
                   <Insets value="[2, 2, 2, 2]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="zeroActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
