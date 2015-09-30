@@ -176,6 +176,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         equals.setText("=");
         equals.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        equals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                equalsActionPerformed(evt);
+            }
+        });
 
         one.setText("1");
         one.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -369,8 +374,8 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     String output = "";
-    double num1;
-    double num2;
+    double num1 = 0.0;
+    double num2 = 0.0;
     int operationStage = 0;
     
     boolean positive = true;
@@ -463,10 +468,17 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void plusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusActionPerformed
         // TODO add your handling code here
-        num1 = Double.parseDouble(output);
-        output = "";
+        if (operationStage == 0) {
+            num1 = Double.parseDouble(output);
+            output = "";
+            operationStage = 1;
+        }
         
     }//GEN-LAST:event_plusActionPerformed
+
+    private void equalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalsActionPerformed
+        
+    }//GEN-LAST:event_equalsActionPerformed
 
     
     /**
