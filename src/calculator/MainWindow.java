@@ -84,8 +84,13 @@ public class MainWindow extends javax.swing.JFrame {
         del.setFont(new java.awt.Font("Noto Sans", 0, 10)); // NOI18N
         del.setText("<--");
         del.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        del.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delActionPerformed(evt);
+            }
+        });
 
-        clearE.setFont(new java.awt.Font("Noto Sans", 0, 10)); // NOI18N
+        clearE.setFont(new java.awt.Font("Noto Sans", 0, 8)); // NOI18N
         clearE.setText("CE");
         clearE.setMargin(new java.awt.Insets(2, 2, 2, 2));
         clearE.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +117,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         sqrt.setText("√");
         sqrt.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        sqrt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sqrtActionPerformed(evt);
+            }
+        });
 
         seven.setText("7");
         seven.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -139,6 +149,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         divide.setText("/");
         divide.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        divide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                divideActionPerformed(evt);
+            }
+        });
 
         percent.setText("%");
         percent.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -146,9 +161,19 @@ public class MainWindow extends javax.swing.JFrame {
         inverse.setFont(new java.awt.Font("Noto Sans", 0, 8)); // NOI18N
         inverse.setText("1/x");
         inverse.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        inverse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inverseActionPerformed(evt);
+            }
+        });
 
         multiply.setText("*");
         multiply.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        multiply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multiplyActionPerformed(evt);
+            }
+        });
 
         six.setText("6");
         six.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -208,6 +233,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         minus.setText("-");
         minus.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        minus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minusActionPerformed(evt);
+            }
+        });
 
         plus.setText("+");
         plus.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -322,13 +352,17 @@ public class MainWindow extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(plusMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(plusMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sqrt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(3, 3, 3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(clearE, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(sqrt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2, 2, 2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(seven, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eight, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,63 +407,133 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    String output = "";
-    double num1 = 0.0;
-    double num2 = 0.0;
-    int operationStage = 0;
+    String output = ""; //String that gets outputed with values entered
+    double num1 = 0.0; //First digit being operate on
+    double num2 = 0.0; //Second digit being operated on
+    int operationStage = 0; //What type of operation is going on
     
-    boolean positive = true;
-    boolean pointed = false;
+    boolean positive = true; //If you have already changed a number to negative
+    boolean pointed = false; //If you have already added a decimal
+    boolean fresh = true; //If you have just hit the equal sign
+    
+    double performOp(int operation) { //Performs desired operation
+        double sol = 0;
+        if (operationStage == 1) { //Addition 
+            num2 = Double.parseDouble(output);
+            sol = num1 + num2;
+        }
+        
+        if (operationStage == 2) { //Subtraction
+            num2 = Double.parseDouble(output);
+            sol = num1 - num2;
+        }
+        
+        if (operationStage == 3) { //Multiplication
+            num2 = Double.parseDouble(output);
+            sol = num1 * num2;
+        }
+        
+        if (operationStage == 4) { //Division
+            num2 = Double.parseDouble(output);
+            sol = num1 / num2;
+        }
+        return sol;
+    }
     
     private void zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroActionPerformed
-        // TODO add your handling code here:
+        // Adds zero to output if pressed
+        if (!fresh) {
+            output = "";
+            fresh = true;
+        }
+        
         output += "0";
         jTextPane1.setText(output);
     }//GEN-LAST:event_zeroActionPerformed
 
     private void oneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneActionPerformed
-        // TODO add your handling code here:
+        // Adds one to output if pressed
+        if (!fresh) {
+            output = "";
+            fresh = true;
+        }
         output += "1";
         jTextPane1.setText(output);
     }//GEN-LAST:event_oneActionPerformed
 
     private void twoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoActionPerformed
-        // TODO add your handling code here:
+        // Adds two to output if pressed
+        if (!fresh) {
+            output = "";
+            fresh = true;
+        }
         output += "2";
         jTextPane1.setText(output);
     }//GEN-LAST:event_twoActionPerformed
 
     private void threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeActionPerformed
+        // Adds three to output if pressed
+        if (!fresh) {
+            output = "";
+            fresh = true;
+        }
         output += "3";
         jTextPane1.setText(output);
     }//GEN-LAST:event_threeActionPerformed
 
     private void fourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourActionPerformed
+        // Adds four to output if pressed
+        if (!fresh) {
+            output = "";
+            fresh = true;
+        }
         output += "4";
         jTextPane1.setText(output);
     }//GEN-LAST:event_fourActionPerformed
 
     private void fiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveActionPerformed
-       output += "5";
+       // Adds five to output if pressed
+       if (!fresh) {
+            output = "";
+            fresh = true;
+        }
+        output += "5";
        jTextPane1.setText(output);
     }//GEN-LAST:event_fiveActionPerformed
 
     private void sixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixActionPerformed
+        // Adds six to output if pressed
+       if (!fresh) {
+            output = "";
+            fresh = true;
+        }
         output += "6";
         jTextPane1.setText(output);
     }//GEN-LAST:event_sixActionPerformed
 
     private void sevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenActionPerformed
+        if (!fresh) {
+            output = "";
+            fresh = true;
+        }
         output += "7";
         jTextPane1.setText(output);
     }//GEN-LAST:event_sevenActionPerformed
 
     private void eightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightActionPerformed
+        if (!fresh) {
+            output = "";
+            fresh = true;
+        }
         output += "8";
         jTextPane1.setText(output);
     }//GEN-LAST:event_eightActionPerformed
 
     private void nineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineActionPerformed
+        if (!fresh) {
+            output = "";
+            fresh = true;
+        }
         output += "9";
         jTextPane1.setText(output);
     }//GEN-LAST:event_nineActionPerformed
@@ -460,10 +564,12 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         output = "";
         operationStage = 0;
+        jTextPane1.setText(output);
     }//GEN-LAST:event_clearActionPerformed
 
     private void clearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearEActionPerformed
         output = "";
+        jTextPane1.setText(output);
     }//GEN-LAST:event_clearEActionPerformed
 
     private void plusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusActionPerformed
@@ -474,11 +580,96 @@ public class MainWindow extends javax.swing.JFrame {
             operationStage = 1;
         }
         
+        else {
+            num1 = performOp(1);
+            output = "";
+        }
+        
+        jTextPane1.setText(output);
     }//GEN-LAST:event_plusActionPerformed
 
     private void equalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalsActionPerformed
+        if (operationStage == 0) {
+            return;
+        }
+        
+        num1 = performOp(operationStage);
+        output = "" + num1;
+        jTextPane1.setText(output);
+        operationStage = 0;
+        fresh = false;
+        
         
     }//GEN-LAST:event_equalsActionPerformed
+
+    private void minusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusActionPerformed
+        if (operationStage == 0) {
+            num1 = Double.parseDouble(output);
+            output = "";
+            operationStage = 2;
+        }
+
+        else {
+            num1 = performOp(2);
+            output = "";
+        }
+
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_minusActionPerformed
+
+    private void multiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyActionPerformed
+        if (operationStage == 0) {
+            num1 = Double.parseDouble(output);
+            output = "";
+            operationStage = 3;
+        }
+
+        else {
+            num1 = performOp(3);
+            output = "";
+        }
+
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_multiplyActionPerformed
+
+    private void divideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideActionPerformed
+        if (operationStage == 0) {
+            num1 = Double.parseDouble(output);
+            output = "";
+            operationStage = 4;
+        }
+
+        else {
+            num1 = performOp(4);
+            output = "";
+        }
+
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_divideActionPerformed
+
+    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+        output = output.substring(0, output.length() - 1);
+        jTextPane1.setText(output);
+    }//GEN-LAST:event_delActionPerformed
+
+    private void sqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqrtActionPerformed
+        num2 = Double.parseDouble(output);
+        num2 = Math.sqrt(num2);
+        output = "" + num2;
+        
+        jTextPane1.setText(output);
+        fresh = false;
+    }//GEN-LAST:event_sqrtActionPerformed
+
+    private void inverseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inverseActionPerformed
+        num2 = Double.parseDouble(output);
+        num2 = Math.pow(num2, -1);
+        
+        output = "" + num2;
+        
+        jTextPane1.setText(output);
+        fresh = false;
+    }//GEN-LAST:event_inverseActionPerformed
 
     
     /**
