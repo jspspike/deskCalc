@@ -600,8 +600,18 @@ public class MainWindow extends javax.swing.JFrame {
             return;
         }
         
+       
+        
         num1 = performOp(operationStage); //Performs desired operation
-        output = "" + num1;
+        if (num1 % 10 == 0) {
+            int temp;
+            temp = (int)num1;
+            output = "" + temp;
+        }
+        
+        else {
+            output = "" + num1;
+        }
         jTextPane1.setText(output);
         operationStage = 0; //Resets operation
         fresh = false;
