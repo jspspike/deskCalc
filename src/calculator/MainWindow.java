@@ -512,6 +512,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_sixActionPerformed
 
     private void sevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenActionPerformed
+        // Adds seven to output if pressed
         if (!fresh) {
             output = "";
             fresh = true;
@@ -521,6 +522,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_sevenActionPerformed
 
     private void eightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightActionPerformed
+        // Adds eight to output if pressed
         if (!fresh) {
             output = "";
             fresh = true;
@@ -530,6 +532,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_eightActionPerformed
 
     private void nineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineActionPerformed
+        // Adds nine to output if pressed
         if (!fresh) {
             output = "";
             fresh = true;
@@ -539,6 +542,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_nineActionPerformed
 
     private void pointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointActionPerformed
+        // Adds decimal to output if pressed
+        // Disables if already pressed there is no "double decimal"
         if (!pointed) {
             output += ".";
         }
@@ -548,6 +553,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_pointActionPerformed
 
     private void plusMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusMinusActionPerformed
+        //Changes positive number to negative number
         if (positive) {
             output = "-" + output;
             positive = false;
@@ -561,26 +567,27 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_plusMinusActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        // TODO add your handling code here:
+        //Clears all entries
         output = "";
         operationStage = 0;
         jTextPane1.setText(output);
     }//GEN-LAST:event_clearActionPerformed
 
     private void clearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearEActionPerformed
+        //Clears current output but leaves previous output intact
         output = "";
         jTextPane1.setText(output);
     }//GEN-LAST:event_clearEActionPerformed
 
     private void plusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusActionPerformed
-        // TODO add your handling code here
-        if (operationStage == 0) {
+        // To add numbers
+        if (operationStage == 0) { //If first time pressed
             num1 = Double.parseDouble(output);
             output = "";
             operationStage = 1;
         }
         
-        else {
+        else { //If second time pressed
             num1 = performOp(1);
             output = "";
         }
@@ -593,23 +600,23 @@ public class MainWindow extends javax.swing.JFrame {
             return;
         }
         
-        num1 = performOp(operationStage);
+        num1 = performOp(operationStage); //Performs desired operation
         output = "" + num1;
         jTextPane1.setText(output);
-        operationStage = 0;
+        operationStage = 0; //Resets operation
         fresh = false;
         
         
     }//GEN-LAST:event_equalsActionPerformed
 
     private void minusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusActionPerformed
-        if (operationStage == 0) {
+        if (operationStage == 0) { //If first time pressed
             num1 = Double.parseDouble(output);
             output = "";
             operationStage = 2;
         }
 
-        else {
+        else { //If second time pressed
             num1 = performOp(2);
             output = "";
         }
@@ -618,13 +625,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_minusActionPerformed
 
     private void multiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyActionPerformed
-        if (operationStage == 0) {
+        if (operationStage == 0) { //If first time pressed
             num1 = Double.parseDouble(output);
             output = "";
             operationStage = 3;
         }
 
-        else {
+        else { //If second time pressed
             num1 = performOp(3);
             output = "";
         }
@@ -633,13 +640,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_multiplyActionPerformed
 
     private void divideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideActionPerformed
-        if (operationStage == 0) {
+        if (operationStage == 0) { //If first time pressed
             num1 = Double.parseDouble(output);
             output = "";
             operationStage = 4;
         }
 
-        else {
+        else { //If second time pressed
             num1 = performOp(4);
             output = "";
         }
@@ -648,11 +655,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_divideActionPerformed
 
     private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+        //Acts as backspace deleting just added numbers
         output = output.substring(0, output.length() - 1);
         jTextPane1.setText(output);
     }//GEN-LAST:event_delActionPerformed
 
     private void sqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqrtActionPerformed
+        //Square roots entered number
         num2 = Double.parseDouble(output);
         num2 = Math.sqrt(num2);
         output = "" + num2;
@@ -662,6 +671,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_sqrtActionPerformed
 
     private void inverseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inverseActionPerformed
+        //Inverses entered number
         num2 = Double.parseDouble(output);
         num2 = Math.pow(num2, -1);
         
